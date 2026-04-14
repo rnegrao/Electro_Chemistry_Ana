@@ -94,12 +94,19 @@ filelist_all = [
             "01152026/TEST_01152026_GDC9TON_T277C_2_C01.txt",
             "01152026/TEST_01152026_GDC9TON_T303C_2_C01.txt",
             "01152026/TEST_01152026_GDC9TON_T328C_2_C01.txt",
-            "01152026/TEST_01152026_GDC9TON_T353C_2_C01.txt"
+            "01152026/TEST_01152026_GDC9TON_T353C_2_C01.txt",
 
+            "01222026/TEST_01222026_GDC9P9TON_T176C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T201P5C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T227C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T252C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T277C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T302P5C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T328C_2_C01.txt",
+            "01222026/TEST_01222026_GDC9P9TON_T353C_2_C01.txt"
             ]
 
 hex_colors_1 = [
-                
             "#08306b",
             "#08519c",
             "#2171b5",
@@ -108,16 +115,43 @@ hex_colors_1 = [
             "#9ecae1",
             "#c6dbef",
             "#deebf7",
-                            
-            "#00441B",
-            "#006D2C",
-            "#238B45",
-            "#41AE76",
-            "#66C2A4",
-            "#99D8C9",
-            "#CCECE6",
-            "#E5F5F9",
-                            
+
+            "#50187E",
+            "#5C1F93",
+            "#6928A8",
+            "#783BBE",
+            "#8A56D2",
+            "#9F75E3",
+            "#B899F0",
+            "#D0C1FA",
+
+            "#73003F",
+            "#88004D",
+            "#9D005B",
+            "#B20069",
+            "#C71A7A",
+            "#DB3C8F",
+            "#EC6FA7",
+            "#F39BC0",
+                        
+            "#006634",
+            "#007D3E",
+            "#1E944F",
+            "#3CAB65",
+            "#5EC07C",
+            "#82D59A",
+            "#A7E6B8",
+            "#C7F1D2",
+
+            "#645000",
+            "#7A6200",
+            "#917500",
+            "#A88900",
+            "#C09D00",
+            "#D8B200",
+            "#EFC84D",
+            "#FFE08A",
+            
             "#67000d",
             "#a50f15",
             "#cb181d",
@@ -134,30 +168,13 @@ hex_colors_1 = [
             "#8D8D8D",
             "#AFAFAF",
             "#C0C0C0",
-            "#D2D2D2",
-
-            "#7F2704",
-            "#A63603",
-            "#D94801",
-            "#F16913",
-            "#FD8D3C",
-            "#FDAE6B",
-            "#FDD0A2",
-            "#FEE6CE",
-                            
-            "#4D3B00",
-            "#7A5C00",
-            "#B38A00",
-            "#E6B800",
-            "#FFD24D",
-            "#FFE680",
-            "#FFF0B3",
-            "#FFF7D6"
+            "#D2D2D2"               
             ]
 
-j=0
+
 # Create the figure and axis
 fig1, ax = plt.subplots(figsize=(25.5, 33))
+j=0
 for i in filelist_all:###<-------------
     data = np.loadtxt(i,skiprows=1)
     column1 = data[:,0]
@@ -237,9 +254,11 @@ for i in filelist_all:###<-------------
     
 outputfile.savefig()
 plt.close()
+# Close pdf file
+outputfile.close()
+print("Report created successfully!")
 
-# Create the figure and axis
-
+# Nyquist Plot of all data 
 hex_colors_2 = ["#CB181D",
                 "#CB181D",
                 "#CB181D",
@@ -277,25 +296,33 @@ hex_colors_2 = ["#CB181D",
                 "#2F7CAA",
                 "#2F7CAA",
                 
-                "#A50F15",
-                "#A50F15",
-                "#A50F15",
-                "#A50F15",
-                "#A50F15",
-                "#A50F15",
-                "#A50F15",
-                "#A50F15",
+                "#67000D",
+                "#67000D",
+                "#67000D",
+                "#67000D",
+                "#67000D",
+                "#67000D",
+                "#67000D",
+                "#67000D",
                 
-                "#67000D",
-                "#67000D",
-                "#67000D",
-                "#67000D",
-                "#67000D",
-                "#67000D",
-                "#67000D",
-                "#67000D",
+                "#A50F15",
+                "#A50F15",
+                "#A50F15",
+                "#A50F15",
+                "#A50F15",
+                "#A50F15",
+                "#A50F15",
+                "#A50F15",
 
-    ]
+                "#404040",
+                "#404040",
+                "#404040",
+                "#404040",
+                "#404040",
+                "#404040",
+                "#404040",
+                "#404040"
+                ]
 
 fig3, ax = plt.subplots(figsize=(25.5, 33))
 j=0
@@ -338,6 +365,174 @@ for i in filelist_all:###<-------------
 
 plt.show()
 
-# Close pdf file
-outputfile.close()
-print("Report created successfully!")
+# Nyquist Plot of all data by temperature
+legend_string = [
+            "GDC 4.5TON T=175C",
+            "GDC 4.5TON T=200C",
+            "GDC 4.5TON T=225C",
+            "GDC 4.5TON T=250C",
+            "GDC 4.5TON T=275C",
+            "GDC 4.5TON T=300C",
+            "GDC 4.5TON T=325C",
+            "GDC 4.5TON T=350C",
+                
+            "GDC 5.5TON T=175C",
+            "GDC 5.5TON T=200C",
+            "GDC 5.5TON T=225C",
+            "GDC 5.5TON T=250C",
+            "GDC 5.5TON T=275C",
+            "GDC 5.5TON T=300C",
+            "GDC 5.5TON T=325C",
+            "GDC 5.5TON T=350C",
+
+            "GDC 6.5TON T=175C",
+            "GDC 6.5TON T=200C",
+            "GDC 6.5TON T=225C",
+            "GDC 6.5TON T=250C",
+            "GDC 6.5TON T=275C",
+            "GDC 6.5TON T=300C",
+            "GDC 6.5TON T=325C",
+            "GDC 6.5TON T=350C",
+                
+            "GDC 7.2TON T=175C",
+            "GDC 7.2TON T=200C",
+            "GDC 7.2TON T=225C",
+            "GDC 7.2TON T=250C",
+            "GDC 7.2TON T=275C",
+            "GDC 7.2TON T=300C",
+            "GDC 7.2TON T=325C",
+            "GDC 7.2TON T=350C",
+
+            "GDC 8.1TON T=175C",
+            "GDC 8.1TON T=200C",
+            "GDC 8.1TON T=225C",
+            "GDC 8.1TON T=250C",
+            "GDC 8.1TON T=275C",
+            "GDC 8.1TON T=300C",
+            "GDC 8.1TON T=325C",
+            "GDC 8.1TON T=350C",
+            
+            "GDC 9.0TON T=175C",
+            "GDC 9.0TON T=200C",
+            "GDC 9.0TON T=225C",
+            "GDC 9.0TON T=250C",
+            "GDC 9.0TON T=275C",
+            "GDC 9.0TON T=300C",
+            "GDC 9.0TON T=325C",
+            "GDC 9.0TON T=350C",
+
+            "GDC 9.9TON T=175C",
+            "GDC 9.9TON T=200C",
+            "GDC 9.9TON T=225C",
+            "GDC 9.9TON T=250C",
+            "GDC 9.9TON T=275C",
+            "GDC 9.9TON T=300C",
+            "GDC 9.9TON T=325C",
+            "GDC 9.9TON T=350C"
+            ]
+
+maker_style = [
+            'o',
+            's',
+            'D',
+            'P',
+            'X',
+            'p',
+            '^'
+            ]
+
+hex_colors_3 = ["#CB181D",
+                "#EF3B2C",
+                
+                "#08519C",
+                "#2F7CAA",
+      
+                "#67000D",
+                "#A50F15",
+
+                "#404040"
+                ]
+hex_colors_4 = [
+"#565656",
+"#6B6B6B",
+"#808080",
+"#969696",
+"#ACACAC",
+"#C2C2C2",
+"#D8D8D8"
+                ]
+
+for i in range(0,8): # TEMPERATURE LOOP
+    fig4, ax = plt.subplots(figsize=(8, 8))
+    for j in range(0,7): #SAMPLE LOOP
+        
+        data3 = np.loadtxt(filelist_all[j*8+i],skiprows=13)
+        print(filelist_all[j*8+i])
+        column1 = data3[:,0]
+        column2 = data3[:,1]
+        column3 = data3[:,2]
+        column4 = data3[:,3]
+        column5 = -1.0*data3[:,4]
+        
+        # Create the Nyquist Impedance plot
+        #ax.loglog(column2,column3, label=i, marker='o',linestyle='None',color=hex_colors_1[j])
+        ax.plot(column2,column3, label=legend_string[j*8+i], marker=maker_style[j],linestyle='None',color=hex_colors[j])
+
+        # Add labels and title
+        plt.xlabel('Re[Z](Ohm)')
+        plt.ylabel('-Im[Z](Ohm)')
+        plt.title('Nyquist Impedance')
+        #plt.xlim(100,1200000)       # X-axis from  to 
+        #plt.ylim(10,1000000)  # Y-axis from  to 
+
+        # Scientific notation on both axes
+        formatter = ScalarFormatter(useMathText=True)
+        formatter.set_scientific(True)
+        ax.xaxis.set_major_formatter(formatter)
+        ax.yaxis.set_major_formatter(formatter)
+
+
+        # Add grid, minor ticks, and legend
+        ax.grid(True, which='major', linestyle='-', alpha=0.3)
+        ax.minorticks_on()
+        ax.grid(True, which='minor', linestyle=':', alpha=0.2)
+        ax.legend(loc='upper left',frameon=False)
+
+    # Show the plot
+    plt.tight_layout()
+    plt.show()
+
+
+# Density plot
+fig5, ax = plt.subplots(figsize=(8, 8))
+data4 = np.loadtxt('DATA/DENSIDADE.txt',skiprows=1)
+column1 = data4[:,0]
+column2 = data4[:,1]
+column3 = data4[:,2]
+column4 = data4[:,3]
+
+# Create plot
+#ax.loglog(column2,column3, label=i, marker='o',linestyle='None',color=hex_colors_1[j])
+ax.errorbar(column2,column3,column4, marker='o',linestyle='None',color='black',capsize=5)
+
+# Add labels and title
+plt.xlabel('Compaction Pressure(MPa)')
+plt.ylabel('Density(g/cm^3)')
+plt.title('')
+plt.xlim(20,160)       # X-axis from  to 
+plt.ylim(6,7.6)  # Y-axis from  to 
+
+# Scientific notation on both axes
+formatter = ScalarFormatter(useMathText=True)
+formatter.set_scientific(True)
+ax.xaxis.set_major_formatter(formatter)
+ax.yaxis.set_major_formatter(formatter)
+
+# Add grid, minor ticks, and legend
+ax.grid(True, which='major', linestyle='-', alpha=0.3)
+ax.minorticks_on()
+#ax.legend(loc='upper left',frameon=False)
+
+# Show the plot
+plt.tight_layout()
+plt.show()
