@@ -1,4 +1,4 @@
-# plot_eis_gdc.py
+# fit_eis.py
 # Plot user-provided Nyquist data (Re, Im) to 2x (R || CPE) in series.
 # Requirements: numpy, matplotlib, lmfit
 # Install: pip install numpy matplotlib lmfit
