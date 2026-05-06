@@ -246,14 +246,14 @@ for i in file_list:
         ####################################
         # If you have the real frequencies, replace this vector with them (one value per point).
         f_max = 3e6
-        f_min = 1.e0
+        f_min = .5e0
         freqs = np.logspace(np.log10(f_max), np.log10(f_min), N)
         omega = 2*np.pi*freqs
 
         ####################################
         # Initial parameters & bounds
         ####################################
-        n=0.1
+        n=1.
         R0=input_parameters[j][0]
         R1=input_parameters[j][1]
         Q1=input_parameters[j][2]
@@ -273,9 +273,9 @@ for i in file_list:
         params.add('Q1', value=Q1, min=Q1-n*Q1, max=Q1+n*Q1, vary=False)
         params.add('n1', value=n1, min=n1-n*n1, max=n1+n*n1, vary=False)
         #second circle
-        params.add('R2', value=R2, min=R2-n*R2, max=R2+n*R2, vary=False)
-        params.add('Q2', value=Q2, min=Q2-n*Q2, max=Q2+n*Q2, vary=False)
-        params.add('n2', value=n2, min=n2-n*n2, max=n2+n*n2, vary=False)
+        params.add('R2', value=R2, min=R2-n*R2, max=R2+n*R2, vary=True)
+        params.add('Q2', value=Q2, min=Q2-n*Q2, max=Q2+n*Q2, vary=True)
+        params.add('n2', value=n2, min=n2-n*n2, max=n2+n*n2, vary=True)
         #diffusion
         params.add('Rd', value=Rd, min=Rd-n*Rd, max=Rd+n*Rd, vary=False)
         params.add('td', value=td, min=td-n*td, max=td+n*td, vary=False)
@@ -301,7 +301,7 @@ for i in file_list:
         plt.plot(Z_fit.real, -Z_fit.imag, '--', label='Equivalent Circuit Model', linewidth=1)
         plt.xlabel('Re(Z) / Ohm')
         plt.ylabel('Im(Z) / Ohm')
-        plt.title('Nyquist-like plot (data vs fit)')
+        plt.title('Nyquist plot (data vs fit)')
     
         # Set font to sans-serif for a scientific look
         plt.rcParams.update({
