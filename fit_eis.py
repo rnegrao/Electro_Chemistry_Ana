@@ -301,7 +301,7 @@ for i in file_list:
         plt.plot(Z_fit.real, -Z_fit.imag, '--', label='Equivalent Circuit Model', linewidth=1)
         plt.xlabel('Re(Z) / Ohm')
         plt.ylabel('Im(Z) / Ohm')
-        plt.title('Nyquist plot (data vs fit)')
+        plt.title('Nyquist plot')
     
         # Set font to sans-serif for a scientific look
         plt.rcParams.update({
