@@ -1,4 +1,4 @@
-# fit_eis.py
+# Arrhenius_conductivity.py
 # Plot user-provided Arrhenius plot
 # Requirements: numpy, matplotlib, lmfit
 # Install: pip install numpy matplotlib lmfit
@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from lmfit import Parameters, minimize, report_fit
 from matplotlib.ticker import ScalarFormatter
 
-# ---------- your freq/Hz Re(Z)/Ohm -Im(Z)/Ohm |Z|/Ohm Phase(Z)/deg data ----------
+# ----------  ----------
 # file list
 file_list_gdc = [
             "DATA/CONDUCTIVITY/GDC_6P5TON_CONDUCTIVITY_VS_1OVERT.txt",
