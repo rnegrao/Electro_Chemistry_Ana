@@ -1,5 +1,5 @@
-# fit_eis.py
-# Plot user-provided Nyquist data (Re, Im) to 2x (R || CPE) in series.
+# ratio_eis.py
+# Plot ration of the user provided data.
 # Requirements: numpy, matplotlib, lmfit
 # Install: pip install numpy matplotlib lmfit
 
@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from lmfit import Parameters, minimize, report_fit
 from matplotlib.ticker import ScalarFormatter
 
-# ---------- your freq/Hz Re(Z)/Ohm -Im(Z)/Ohm |Z|/Ohm Phase(Z)/deg data ----------
+# ----------  ----------
 
 hex_colors = [
             "#67000D",
