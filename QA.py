@@ -460,7 +460,71 @@ def nyquist_plot_by_temperature():
                 "GDC 9.9TON T=325C",
                 "GDC 9.9TON T=350C"
                 ]
+    legend_string = [
+                "GDC 63.7 MPa T=175C",
+                "GDC 63.7 MPa T=200C",
+                "GDC 63.7 MPa T=225C",
+                "GDC 63.7 MPa T=250C",
+                "GDC 63.7 MPa T=275C",
+                "GDC 63.7 MPa T=300C",
+                "GDC 63.7 MPa T=325C",
+                "GDC 63.7 MPa T=350C",
+                    
+                "GDC 77.8 MPa T=175C",
+                "GDC 77.8 MPa T=200C",
+                "GDC 77.8 MPa T=225C",
+                "GDC 77.8 MPa T=250C",
+                "GDC 77.8 MPa T=275C",
+                "GDC 77.8 MPa T=300C",
+                "GDC 77.8 MPa T=325C",
+                "GDC 77.8 MPa T=350C",
 
+                "GDC 91.9 MPa T=175C",
+                "GDC 91.9 MPa T=200C",
+                "GDC 91.9 MPa T=225C",
+                "GDC 91.9 MPa T=250C",
+                "GDC 91.9 MPa T=275C",
+                "GDC 91.9 MPa T=300C",
+                "GDC 91.9 MPa T=325C",
+                "GDC 91.9 MPa T=350C",
+                    
+                "GDC 101.8 MPa T=175C",
+                "GDC 101.8 MPa T=200C",
+                "GDC 101.8 MPa T=225C",
+                "GDC 101.8 MPa T=250C",
+                "GDC 101.8 MPa T=275C",
+                "GDC 101.8 MPa T=300C",
+                "GDC 101.8 MPa T=325C",
+                "GDC 101.8 MPa T=350C",
+
+                "GDC 114.6 MPa T=175C",
+                "GDC 114.6 MPa T=200C",
+                "GDC 114.6 MPa T=225C",
+                "GDC 114.6 MPa T=250C",
+                "GDC 114.6 MPa T=275C",
+                "GDC 114.6 MPa T=300C",
+                "GDC 114.6 MPa T=325C",
+                "GDC 114.6 MPa T=350C",
+                
+                "GDC 127.3 MPa T=175C",
+                "GDC 127.3 MPa T=200C",
+                "GDC 127.3 MPa T=225C",
+                "GDC 127.3 MPa T=250C",
+                "GDC 127.3 MPa T=275C",
+                "GDC 127.3 MPa T=300C",
+                "GDC 127.3 MPa T=325C",
+                "GDC 127.3 MPa T=350C",
+
+                "GDC 140.0 MPa T=175C",
+                "GDC 140.0 MPa T=200C",
+                "GDC 140.0 MPa T=225C",
+                "GDC 140.0 MPa T=250C",
+                "GDC 140.0 MPa T=275C",
+                "GDC 140.0 MPa T=300C",
+                "GDC 140.0 MPa T=325C",
+                "GDC 140.0 MPa T=350C"
+                ]
+    
     maker_style = [
                 'o',
                 's',
@@ -521,17 +585,30 @@ def density_plot():
     column2 = data4[:,1]
     column3 = data4[:,2]
     column4 = data4[:,3]
-
+   
     # Create plot
-    #ax.loglog(column2,column3, label=i, marker='o',linestyle='None',color=hex_colors_1[j])
-    ax.errorbar(column2,column3,column4, marker='o',linestyle='None',color='black',capsize=5)
+    ax.errorbar(column2,column3,column4, label='Density measurements', marker='o',linestyle='None',color=hex_colors[2],ecolor = 'black',capsize=5)
+    
+    mean = np.mean(column3)
+    sigma = np.sqrt( (1.0/8.0)**2 * (column4[0]**2 + column4[1]**2 + column4[2]**2 + column4[3]**2 + column4[4]**2
+                                   + column4[5]**2 + column4[6]**2 + column4[7]**2 ) )
+    
+    print("Mean: ",np.mean(column3))
+    print("Average: ", np.average(column3))
+    print("Median: ", np.median(column3))
+    print("Sigma:" ,sigma)
 
+    x = [0., 200]
+    CeO_density = [mean, mean]
+    ax.plot(x, CeO_density, linestyle='--',color='navy', label='Average value')
+    ax.fill_between(x, mean - sigma, mean + sigma, alpha=0.2)
+    
     # Add labels and title
     plt.xlabel('Compaction Pressure(MPa)')
     plt.ylabel('Density(g/cm^3)')
     plt.title('')
     plt.xlim(20,160) # X-axis from  to 
-    plt.ylim(6,7.6)  # Y-axis from  to 
+    plt.ylim(6.2,7.8)  # Y-axis from  to 
 
     # Scientific notation on both axes
     formatter = ScalarFormatter(useMathText=True)
@@ -542,7 +619,12 @@ def density_plot():
     # Add grid, minor ticks, and legend
     ax.grid(True, which='major', linestyle='-', alpha=0.3)
     ax.minorticks_on()
-    #ax.legend(loc='upper left',frameon=False)
+    ax.grid(True, which='minor', linestyle=':', alpha=0.2)
+    #ax.legend(loc='upper right',frameon=False)
+    
+    handles, labels = plt.gca().get_legend_handles_labels()
+    order = [1, 0]
+    ax.legend([handles[i] for i in order], [labels[i] for i in order])
 
     # Show the plot
     plt.tight_layout()
