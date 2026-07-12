@@ -1,4 +1,4 @@
-# Arrhenius_conductivity.py
+# fit_eis.py
 # Plot user-provided Arrhenius plot
 # Requirements: numpy, matplotlib, lmfit
 # Install: pip install numpy matplotlib lmfit
@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 from lmfit import Parameters, minimize, report_fit
 from matplotlib.ticker import ScalarFormatter
 
-# ----------  ----------
 # file list
 file_list_gdc = [
             "DATA/CONDUCTIVITY/GDC_6P5TON_CONDUCTIVITY_VS_1OVERT.txt",
@@ -17,7 +16,7 @@ file_list_gdc = [
             "DATA/CONDUCTIVITY/GDC_REF2_CONDUCTIVITY_VS_1OVERT.txt"
             ]
 legend_string_gdc = [
-            "CNPEM measurements (GDC)",
+            "Measurements (GDC)",
             "Reference https://doi.org/10.1007/s42452-020-03280-2",
             "Reference https://doi.org/10.1039/D4MA00690A"
             ]
@@ -76,25 +75,11 @@ for i in file_list_gdc:
     # PLOT 
     ####################################
     #plt.plot(sigma, InvT, 'o', label=legend_string_gdc[j], markersize=4,color=hex_colors[j])
-    plt.semilogy(sigma, InvT, 'o', marker=maker_style[j], label=legend_string_gdc[j], markersize=4,color=hex_colors[j])
+    plt.semilogy(sigma, InvT, 'o', marker=maker_style[j], label=legend_string_gdc[j], markersize=8,color=hex_colors[j])
     plt.xlabel('1000/T (1/K)')
     plt.ylabel(' Conductivity (S/cm)')
     plt.title('')
     j=j+1
-
-    # Set font to sans-serif for a scientific look
-    plt.rcParams.update({
-        'font.family': 'sans-serif',
-        'font.size': 12,
-        'axes.labelsize': 14,
-        'axes.titlesize': 16,
-        'xtick.labelsize': 12,
-        'ytick.labelsize': 12,
-        'legend.fontsize': 12,
-        'lines.linewidth': 1.5,
-        'lines.markersize': 5,
-        'mathtext.fontset': 'cm',
-    })
 
     # Scientific notation on both axes
     formatter = ScalarFormatter(useMathText=True)
@@ -110,7 +95,8 @@ for i in file_list_gdc:
             
     plt.legend()
     #plt.savefig(figfile, dpi=300)
-
+    
+plt.tight_layout()
 plt.show()
-#print("Saved figure:", figfile)
+
 
