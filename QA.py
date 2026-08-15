@@ -537,7 +537,7 @@ def nyquist_plot_by_temperature():
     
     for i in range(0,8): # TEMPERATURE LOOP
         fig4, ax = plt.subplots(figsize=(8, 8))
-        for j in range(0,7): #SAMPLE LOOP
+        for j in range(0,7,3): #SAMPLE LOOP
             
             data3 = np.loadtxt(filelist_all[j*8+i],skiprows=13)
             print(filelist_all[j*8+i])
@@ -631,7 +631,21 @@ def density_plot():
     plt.show()
 
 if __name__ == '__main__':
-    QA_plot()
-    nyquist_plot_all()
-    nyquist_plot_by_temperature()
+    # Set font to sans-serif for a scientific look
+    plt.rcParams.update({
+        'font.family': 'sans-serif',
+        'font.size': 14,
+        'axes.labelsize': 14,
+        'axes.titlesize': 16,
+        'xtick.labelsize': 14,
+        'ytick.labelsize': 14,
+        'legend.fontsize': 14,
+        'lines.linewidth': 1.5,
+        'lines.markersize': 5,
+        'mathtext.fontset': 'cm',
+    })
+    
+    #QA_plot()
+    #nyquist_plot_all()
+    #nyquist_plot_by_temperature()
     density_plot()
