@@ -1,4 +1,4 @@
-# fit_eis.py
+# Arrhenius_conductivity.py
 # Plot user-provided Arrhenius plot
 # Requirements: numpy, matplotlib, lmfit
 # Install: pip install numpy matplotlib lmfit
@@ -59,6 +59,20 @@ maker_style = [
             'p',
             '^'
             ]
+
+# Set font to sans-serif for a scientific look
+plt.rcParams.update({
+        'font.family': 'sans-serif',
+        'font.size': 14,
+        'axes.labelsize': 14,
+        'axes.titlesize': 16,
+        'xtick.labelsize': 14,
+        'ytick.labelsize': 14,
+        'legend.fontsize': 12,
+        'lines.linewidth': 1.5,
+        'lines.markersize': 5,
+        'mathtext.fontset': 'cm',
+    })
 
 j=0
 fig, ax = plt.subplots(figsize=(8, 8))
